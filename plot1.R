@@ -14,9 +14,9 @@ if (!exists("SCC")) {
 
 library('data.table')
 dt <- data.table(NEI)
-## get total emissions by year
+## get total emissions by year (eby)
 eby <- dt[, list(emissions=sum(Emissions)), by=year]
 
-png('plot1.png')
+png('plot1.png', width=480, height=480)
 barplot(height=eby$emissions, names.arg=eby$year, xlab="Year", ylab="Emissions", main="Total PM2.5 at various years")
 dev.off()

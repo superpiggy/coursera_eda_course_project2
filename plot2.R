@@ -12,8 +12,9 @@ dt <- data.table(NEI)
 ## get subset data from 'Baltimore'
 baltimore <- subset(dt, fips == '24510')
 
+## get total emissions by year (eby)
 eby <- baltimore[, list(emissions=sum(Emissions)), by=year]
 
-png('plot2.png')
+png('plot2.png', width=480, height=480)
 barplot(height=eby$emissions, names.arg=eby$year, xlab="Year", ylab="Emissions", main="Total PM2.5 in Baltimore")
 dev.off()
